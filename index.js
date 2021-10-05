@@ -6,16 +6,20 @@ const EXTENSION = '.md';
 var pathSupplied = process.argv[2];
 var extFilter = process.argv[3];
 
-var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9(@:%_\+.~#?&//=]*)/g;
+var expression = /\[[-a-zA-Z0-9@:%._\+~#=]]\https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9(@:%_\+.~#?&//=]*)/g;
 var regex = new RegExp(expression);
+let text = /\[([^\]]+)\]\(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9(@:%_\+.~#?&//=]*)/g;
+let re = new RegExp(text);
+// /\[.*?\]/g;  
 
 fs.readFile(pathSupplied, 'utf8' , (err, data) => {
   if (err) {
     console.error(err)
     return
   } else  {
-    //console.log(data.match(regex2));
-    console.log(data.match(regex))
+    console.log(data.match(text));
+    //console.log(data.match(regex))
+
   }
 });
 
