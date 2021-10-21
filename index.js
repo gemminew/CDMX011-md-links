@@ -1,38 +1,31 @@
-const fs = require('fs');
-const path = require('path');
+#!/usr/bin/env node
+//require('../')()
 
-const EXTENSION = '.md';
-
-var pathSupplied = process.argv[2];
-var extFilter = process.argv[3];
-
-var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9(@:%_\+.~#?&//=]*)/g;
-var regex = new RegExp(expression);
-
-fs.readFile(pathSupplied, 'utf8' , (err, data) => {
-  if (err) {
-    console.error(err)
-    return
-  } else  {
-    //console.log(data.match(regex2));
-    console.log(data.match(regex))
+module.exports = () => {
+    console.log('welcome')
+/*     const args = minimist(process.argv.slice(2))
+  
+    let cmd = args._[0] || 'help'
+  
+    if (args.version || args.v) {
+      cmd = 'version'
+    }
+  
+    if (args.help || args.h) {
+      cmd = 'help'
+    }
+  
+    switch (cmd) {
+      case 'validate':
+        require('./md-links-modules/validate')(args)
+        break
+  
+      case 'stats':
+        require('./md-links-modules/stats')(args)
+        break
+  
+      default:
+        error(`"${cmd}" is not a valid command!`, true)
+        break
+    } */
   }
-});
-
-
-//module.exports = () => {
-  // ...
-//};
-
-
-// function extension(element) {
-/* var extName = path.extname(element);
-return extName === '.md' + extFilter; 
-};
-
-fs.readdir(pathSupplied, function(err, list) {
-list.filter(extension).forEach(function(value) {
-  console.log(value);
-  });
-});
- */
