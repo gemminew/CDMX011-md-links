@@ -1,0 +1,4 @@
+
+function stats (links) {
+    
+}
