@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-//require('../')()
 
-module.exports = () => {
     console.log('welcome')
+
+    require('../md-links');
 /*     const args = minimist(process.argv.slice(2))
   
     let cmd = args._[0] || 'help'
@@ -28,4 +28,3 @@ module.exports = () => {
         error(`"${cmd}" is not a valid command!`, true)
         break
     } */
-  }
