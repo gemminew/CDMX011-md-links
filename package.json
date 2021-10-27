@@ -1,15 +1,15 @@
 {
-  "name": "md-links",
-  "version": "0.1.0",
-  "description": "Social Network @ Laboratoria",
-  "main": "index.js",
+  "name": "gem-md-links",
+  "version": "0.1.1",
+  "description": "MD Links @ Laboratoria",
+  "main": "bin/index.js",
   "keywords": [
     "javascript",
     "jest"
   ],
   "license": "MIT",
   "bin": {
-    "md-links": "bin/md-links"
+    "gem-md-links": "./bin/index.js"
   },
   "scripts": {
     "eslint": "eslint --ext .js src/ test/",

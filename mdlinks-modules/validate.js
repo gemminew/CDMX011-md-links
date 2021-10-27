@@ -1,4 +1,5 @@
 const axios = require('axios')
+const path = require('path');
 
 function getValidation (links) {
     console.log('getValidation...');
@@ -14,8 +15,8 @@ function getValidation (links) {
              // console.log(err);
              if(!error.response)
              {
-                 console.log(link);
-                 console.log(JSON.stringify(error));
+                //  console.log(link);
+                //  console.log(JSON.stringify(error));
              }
              else
              {
@@ -29,6 +30,10 @@ function getValidation (links) {
 
    // getValidation("https://google.com/teapot").then(x => console.log(x));
 
+const validationFormatter = async (links) =>{
+//    return links.map(async (x) => path.relative('./', x.file) + ' ' + x.text + ' '+ x.status+' ' + x.message);
+    return Promise.all(links).then(filteredLinks => filteredLinks.map(x => path.relative('./', x.file) + ' ' + x.text + ' '+ x.status+' ' + x.message ));
+};
 
-
+ exports.validationFormatter = validationFormatter;
  exports.getValidation = getValidation;

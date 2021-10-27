@@ -12,10 +12,9 @@ let re = new RegExp(text);
 
 function filterLinks (paths) {
   let linksMD = [];
-  console.log('filterLinks...');
+  //console.log('filterLinks...');
   //const file = fs.readFileSync(fileMD, 'utf8')
-  console.log(JSON.stringify(paths));
-
+ // console.log(JSON.stringify(paths));
     paths.forEach((filename) => {
       data = fs.readFileSync(path.resolve(filename), 'utf8') //, (err, data) => {
         let urls = [];
@@ -26,22 +25,24 @@ function filterLinks (paths) {
         urls = data.match(re);   
         //console.log(urls)
       }
-
-      const splitRegex = urls.forEach((url) => {
-        url = url.slice(1);;
-        const result = url.split('](');
-        if(result[0].length >= 50) {
-          result[0] = result[0].substr(0, 49);
-        }
-//        console.log(JSON.stringify(responses));
-        linksMD.push({
-          'file': path.resolve(filename),  
-          'url': result[1],
-          'text':result [0], 
-          'status': 100,
-          'message': 'PENDING',
-        }); 
-      });
+      if(urls)
+      {
+        const splitRegex = urls.forEach((url) => {
+          url = url.slice(1);;
+          const result = url.split('](');
+          if(result[0].length >= 50) {
+            result[0] = result[0].substr(0, 49);
+          }
+  //        console.log(JSON.stringify(responses));
+          linksMD.push({
+            'file': path.resolve(filename),  
+            'url': result[1],
+            'text':result [0], 
+            'status': 100,
+            'message': 'PENDING',
+          }); 
+        });
+      }
     //});
     
   }); //end paths.forEach

@@ -14,16 +14,18 @@ const directory = (dir) => {
 
     list.forEach((item) => {
         const route = path.join(absolute, item);
-        fileSeeking.push(route)
+        
          if(fs.statSync(route).isDirectory()) {
-            directory(route);
+            directory(route).forEach(newfile => {
+                fileSeeking.push(newfile);
+            });
         } else if(path.extname(route) === '.md' || path.extname(route) === '.markdown'){
             fileSeeking.push(route);
             //console.log(fileSeeking);
         } 
     });
-    console.log(fileSeeking);
-   //return fileSeeking;
+    //console.log(fileSeeking);
+   return fileSeeking;
 };
 
 exports.directory = directory;
