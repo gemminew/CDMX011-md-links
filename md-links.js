@@ -9,23 +9,28 @@ const stats = require('./mdlinks-modules/stats.js');
 
 let pathSupplied = process.argv[2];
 let extFilter = process.argv[3];
+//const validateM = (validate.validationFormatter(validate.getValidation(files.filterLinks(directories.directory(path)))))
+
+const validateM = (validate.validationFormatter(validate.getValidation(files.filterLinks(directories.directory(pathSupplied)))))
+const statsM = (stats.getStats(validate.getValidation(files.filterLinks(directories.directory(pathSupplied)))))
 
 function mdLinks (path, options){
+
     return new Promise((resolve, reject)=> {
             if(path && options == '--validate'){
-                resolve(validate.validationFormatter(validate.getValidation(files.filterLinks(directories.directory(path)))))
+                resolve(validateM)
             } else if(path && options == '--stats'){
-                resolve(stats.getStats(validate.getValidation(files.filterLinks(directories.directory(path)))))
+                resolve(statsM)
+                //resolve(stats.getStats(validate.getValidation(files.filterLinks(directories.directory(path)))))
             } else{
                 reject('error')
             }
      })
  }
 
- 
 mdLinks(pathSupplied, extFilter)
 .then(data => {
-    console.log(typeof(data));
+    //console.log(typeof(data));
 //    console.log(data);
     Promise.all(data).then(x => console.log(x));
     // data.forEach(link => {
