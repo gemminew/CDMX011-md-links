@@ -17,27 +17,32 @@ const getStats = async (filterLinks) => {
       return new Promise((resolve, reject) => resolve([statistics]));
     };
 
-  const stats = (data) => {
-      let statsArray = [];
+  const stats = async (vdata) => {
+    let statsArray = [];
+    await Promise.all(vdata).then(data => {
       const total = data.length; 
       const unique = new Set();
-      data.forEach(link => {
-        unique.add(link.url)
-      })
-        const broken = []
-        let links = unique.map(elem => {
-            if (elem.status == 404){
-                broken.push(elem.status)
-            }
-            return elem.link
-        })        
+      const broken = []
+      let setSize = unique.size;
+      data.forEach((link) => {
+        unique.add(link.url);
+        if(unique.size > setSize) {
+          if(link.status > 299) {
+            broken.push(link);
+          }
+        }
+        setSize = unique.size;
+      });
         statsArray.push({
             'Total': total,
             'Unique': unique.size,
             'Broken': broken.length
         })
         return statsArray
-    }
+
+    }).catch(err => console.error(err));
+    return new Promise((resolve, reject) => resolve(statsArray));
+  }
 
 exports.getStats = getStats;
 exports.stats = stats;

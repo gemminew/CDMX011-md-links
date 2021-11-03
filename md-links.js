@@ -13,14 +13,18 @@ let extFilter = process.argv[3];
 
 const validateM = (validate.validationFormatter(validate.getValidation(files.filterLinks(directories.directory(pathSupplied)))))
 const statsM = (stats.getStats(validate.getValidation(files.filterLinks(directories.directory(pathSupplied)))))
+const validatedStatsM = (stats.stats(validate.getValidation(files.filterLinks(directories.directory(pathSupplied)))))
 
 function mdLinks (path, options){
 
     return new Promise((resolve, reject)=> {
-            if(path && options == '--validate'){
+            if(path && options.s){
+                if(options.v)
+                    resolve(validatedStatsM)
+                else
+                    resolve(statsM)
+            } else if(path && options.v){
                 resolve(validateM)
-            } else if(path && options == '--stats'){
-                resolve(statsM)
                 //resolve(stats.getStats(validate.getValidation(files.filterLinks(directories.directory(path)))))
             } else{
                 reject('error')
@@ -28,18 +32,7 @@ function mdLinks (path, options){
      })
  }
 
-mdLinks(pathSupplied, extFilter)
-.then(data => {
-    //console.log(typeof(data));
-//    console.log(data);
-    Promise.all(data).then(x => console.log(x));
-    // data.forEach(link => {
-    //     link.then(e => console.log(e));
-    // });
-})
-.catch((err)=>{
-    console.log(err)
-});
+
 
  
  exports.mdLinks = mdLinks;  

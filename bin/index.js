@@ -35,6 +35,19 @@ const statsOption = (options.s) ? true : false ;
 const validat = (options.v) ? true : false ; 
 const args = process.argv.slice(2);
 
+mdLinks.mdLinks(path, options)
+.then(data => {
+    
+    //console.log(typeof(data));
+//    console.log(data);
+    Promise.all(data).then(x => console.log(x));
+    // data.forEach(link => {
+    //     link.then(e => console.log(e));
+    // });
+})
+.catch((err)=>{
+    console.log(err)
+});
 
 function cliOptions(options){
   if (path == '--validate' || path == '--v' || path == 'v') {
