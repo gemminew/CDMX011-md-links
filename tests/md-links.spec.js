@@ -35,18 +35,3 @@ describe('Validate', () => {
   });
 });
 
-/* 
-describe('stats', () => {
-  it('should be a function', () => {
-    expect(typeof stats.stats).toBe('function')
-  });
-
-  it("should return an object with 3 properties when validate is true", () => {
-    const validateTrue = stats.stats(data.arrayValidated);
-    expect(validateTrue).toEqual(data.resultArrayValidated);
-  });
-
-  it("should return an object with 2 properties when validate is false", () => {
-    const validateFalse = stats.stats(data.arraySimple);
-    expect(validateFalse).toEqual(data.resultArraySimple);
-  }); */
