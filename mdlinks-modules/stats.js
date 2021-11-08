@@ -1,18 +1,12 @@
 const getStats = async (filterLinks) => {
     let statistics = {};
       await Promise.all(filterLinks).then(arr => {
-/*           arr.forEach(y => {
-              if(y.status != 200)
-                statistics.broken++;
-          }); */
           const unique = new Set();
           arr.forEach(link => {
               unique.add(link.url)
           });
-          //statistics.push({'Total': arr.length, 'Unique': unique.size})
           statistics.Total = arr.length; 
           statistics.Unique = unique.size;    
-          //statistics.working = statistics.total - statistics.broken;
       });
       return new Promise((resolve, reject) => resolve([statistics]));
     };
@@ -41,7 +35,8 @@ const getStats = async (filterLinks) => {
         return statsArray
 
     }).catch(err => console.error(err));
-    return new Promise((resolve, reject) => resolve(statsArray));
+    return new Promise((resolve, reject) => resolve(statsArray
+      ));
   }
 
 exports.getStats = getStats;

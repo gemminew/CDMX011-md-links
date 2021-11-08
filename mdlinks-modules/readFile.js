@@ -3,8 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const getValidation = require('./validate').getValidation;
-let pathSupplied = process.argv[2];
-//let extFilter = process.argv[3];
+
 
 let text = /\[([^\]]+)\]\(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9(@:%_\+.~#?&//=]*)/g;
 let re = new RegExp(text);
@@ -38,7 +37,7 @@ function filterLinks (paths) {
             'file': path.resolve(filename),  
             'url': result[1],
             'text':result [0], 
-            'status': 100,
+            'status': 100, //to avoid errors if for some reason is missed -- doesn't come out as undefinded
             'message': 'PENDING',
           }); 
         });

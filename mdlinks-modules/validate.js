@@ -1,7 +1,7 @@
 const axios = require('axios')
 const path = require('path');
+
 function getValidation (links) {
-    //console.log('getValidation...');
     
     return links.map(async (link) => {
         let res = link;

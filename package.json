@@ -12,9 +12,9 @@
     "gem-md-links": "./bin/index.js"
   },
   "scripts": {
-    "eslint": "eslint --ext .js src/ test/",
-    "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
-    "test": "jest --coverage --watch",
+    "eslint": "eslint --ext .js src/ tests/",
+    "pretest": "npm run eslint",
+    "test": "jest --coverage",
     "start": "serve"
   },
   "devDependencies": {
@@ -25,12 +25,8 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^24.1.0",
-    "htmlhint": "^0.15.1",
     "jest": "^27.3.1",
-    "regenerator-runtime": "^0.13.1",
-    "serve": "^12.0.1",
-    "stylelint": "^13.13.1",
-    "stylelint-config-recommended": "^5.0.0"
+    "serve": "^12.0.1"
   },
   "engines": {
     "node": ">=10"
@@ -38,21 +34,7 @@
   "dependencies": {
     "axios": "^0.23.0",
     "chalk": "^4.1.2",
-    "firebase": "^8.9.1",
-    "gh-pages": "^3.2.3",
     "url-status-code": "^2.0.0",
     "yargs": "^17.2.1"
-  },
-  "directories": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gemminew/CDMX011-md-links.git"
-  },
-  "author": "",
-  "bugs": {
-    "url": "https://github.com/gemminew/CDMX011-md-links/issues"
-  },
-  "homepage": "https://github.com/gemminew/CDMX011-md-links#readme"
+  }
 }

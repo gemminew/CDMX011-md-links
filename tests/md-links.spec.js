@@ -8,12 +8,12 @@ const stats = require('./mdlinks-modules/stats.js');
 
 /* describe('mdlinks it is a function', () => {
   it('should be a function', () => {
-    expect(typeof mdLinks).toBe('promise');
+    expect(typeof mdLinks).toBe('function');
   })
 });
  */
 it("should return a md file", () => {
-  const result = files.filterLinks('../README.md');
+  const result = files.filterLinks(['../README.md']);
   expect(result).toEqual(data.MDCheck[0]);
 });
 
@@ -22,16 +22,5 @@ describe('Validate', () => {
     expect(typeof validate.getValidation).toBe('function')
   });
 
-  test('should return an object with the status code 200', () => {
-    return validate.getValidation(?200).then(res => { //how can i get the 200 status code?
-      expect(res).toEqual(data.checkStatusValue[0]);
-    });
-  });
-
-  test('should return an object with the status code 404', () => {
-    return validate.validate(?404).catch(res => {
-      expect(res).toEqual(data.checkStatusValue[1]);
-    });
-  });
 });
 

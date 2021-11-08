@@ -10,6 +10,9 @@ const directory = (dir) => {
         return [dir];
     }
     const absolute = path.resolve(dir);
+    if(!fs.existsSync(absolute) || !fs.statSync(absolute).isDirectory()){
+        return [];
+    } 
     const list = fs.readdirSync(absolute);
 
     list.forEach((item) => {
