@@ -5,11 +5,14 @@ const path = require('path');
 
 const directory = (dir) => {
     let fileSeeking = [];
+    console.log(dir);
     if(path.extname(dir) == ".md") {
         return [dir];
     }
-
     const absolute = path.resolve(dir);
+    if(!fs.existsSync(absolute) || !fs.statSync(absolute).isDirectory()){
+        return [];
+    } 
     const list = fs.readdirSync(absolute);
 
     list.forEach((item) => {

@@ -2,7 +2,6 @@ const axios = require('axios')
 const path = require('path');
 
 function getValidation (links) {
-    console.log('getValidation...');
     
     return links.map(async (link) => {
         let res = link;
@@ -32,7 +31,7 @@ function getValidation (links) {
 
 const validationFormatter = async (links) =>{
 //    return links.map(async (x) => path.relative('./', x.file) + ' ' + x.text + ' '+ x.status+' ' + x.message);
-    return Promise.all(links).then(filteredLinks => filteredLinks.map(x => path.relative('./', x.file) + ' ' + x.text + ' '+ x.status+' ' + x.message ));
+    return Promise.all(links).then(filteredLinks => filteredLinks.map(x => path.resolve('./', x.file) + ' ' + x.text + ' '+ x.status+' ' + x.message ));
 };
 
  exports.validationFormatter = validationFormatter;
