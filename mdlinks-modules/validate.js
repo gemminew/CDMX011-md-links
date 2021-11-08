@@ -27,10 +27,8 @@ function getValidation (links) {
     });
 };
 
-   // getValidation("https://google.com/teapot").then(x => console.log(x));
 
 const validationFormatter = async (links) =>{
-//    return links.map(async (x) => path.relative('./', x.file) + ' ' + x.text + ' '+ x.status+' ' + x.message);
     return Promise.all(links).then(filteredLinks => filteredLinks.map(x => path.resolve('./', x.file) + ' ' + x.text + ' '+ x.status+' ' + x.message ));
 };
 

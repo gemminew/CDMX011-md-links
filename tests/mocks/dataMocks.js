@@ -18,14 +18,21 @@ const checkStatusValue = [
       },
 ]
 
-const objLink200 = 
+const status200 = 
 {
     url: 'https://es.wikipedia.org/wiki/Markdown',
     text: 'Markdown',
     file: 'C:\\Projects\\CDMX011-md-links\\CDMX011-md-links\\README.md',
 }
 
-const arrayValidated = [
+const status404 = 
+{
+    url: 'https://gi.com/stevekane/promise-it-wont-hurt',
+    text: 'promise-it-wont-hurt SIGUE Y sigue hasta llegar a',
+    file: 'C:\\Projects\\CDMX011-md-links\\CDMX011-md-links\\README.md',
+  }
+
+const validated = [
     {
         url: 'https://es.wikipedia.org/wiki/Markdown',
         text: 'Markdown',
@@ -34,11 +41,25 @@ const arrayValidated = [
         message: 'OK'
     },
     {
-        href: 'https://nodejs.org/',
+        url: 'https://nodejs.org/',
         text: 'Node.js',
         file: 'mockREADME.md',
         status: 200,
-        message: 'ok'
-    }]
+        message: 'OK'
+    },
 
-module.exports = { MDCheck, checkStatusValue, objLink200, arrayValidated }
+    {
+        url: 'https://gi.com/stevekane/promise-it-wont-hurt',
+        text: 'promise-it-wont-hurt SIGUE Y sigue hasta llegar a',
+        file: 'C:\\Projects\\CDMX011-md-links\\CDMX011-md-links\\README.md',
+        status: 404,
+        message: "FAIL"
+      },
+]
+    const resultArrayValidated = {
+        'Total': 2,
+        'Unique': 2,
+        'Broken': 0
+    }
+
+module.exports = { MDCheck, checkStatusValue, status200, status404, validated, resultArrayValidated }
