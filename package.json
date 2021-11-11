@@ -12,7 +12,7 @@
     "gem-md-links": "./bin/index.js"
   },
   "scripts": {
-    "eslint": "eslint --ext .js src/ tests",
+    "eslint": "eslint --ext .js tests/",
     "pretest": "npm run eslint",
     "test": "jest --coverage",
     "start": "serve"

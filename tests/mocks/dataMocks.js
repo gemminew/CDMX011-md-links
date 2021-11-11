@@ -27,7 +27,7 @@ const status200 =
 
 const status404 = 
 {
-    url: 'https://gi.com/stevekane/promise-it-wont-hurt',
+    url: 'https://github.com/nueiwaf32r932rjf839rhjr82',
     text: 'promise-it-wont-hurt SIGUE Y sigue hasta llegar a',
     file: 'C:\\Projects\\CDMX011-md-links\\CDMX011-md-links\\README.md',
   }
@@ -49,17 +49,21 @@ const validated = [
     },
 
     {
-        url: 'https://gi.com/stevekane/promise-it-wont-hurt',
+        url: 'https://github.com/nueiwaf32r932rjf839rhjr82',
         text: 'promise-it-wont-hurt SIGUE Y sigue hasta llegar a',
         file: 'C:\\Projects\\CDMX011-md-links\\CDMX011-md-links\\README.md',
-        status: 404,
-        message: "FAIL"
+        status: 404
       },
 ]
     const resultArrayValidated = {
-        'Total': 2,
-        'Unique': 2,
-        'Broken': 0
-    }
+        'Total': 3,
+        'Unique': 3,
+        'Broken': 1
+    };
 
-module.exports = { MDCheck, checkStatusValue, status200, status404, validated, resultArrayValidated }
+    const resultsArray = {
+        'Total' : 3,
+        'Unique': 3
+    };
+
+module.exports = { MDCheck, checkStatusValue, status200, status404, validated, resultArrayValidated, resultsArray }

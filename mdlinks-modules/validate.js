@@ -5,17 +5,15 @@ function getValidation (links) {
     
     return links.map(async (link) => {
         let res = link;
-        await axios.get(link.url)
+        await axios.get(link.url) //returns a promise
          .then((response) => {
              res.status = response.status;
              res.message = 'OK';
          })
          .catch((error) => {
-             // console.log(err);
              if(!error.response)
              {
-                //  console.log(link);
-                //  console.log(JSON.stringify(error));
+                 console.log("could not request " + link);
              }
              else
              {

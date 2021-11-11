@@ -13,16 +13,31 @@ describe('getStats it is a function', () => {
     })
   });
 
-  it('should return an empty array.', () => {
- const expectedEmptyArray = stats.getStats([data.status200]);
-    expect(expectedEmptyArray).not.toEqual([{ total: 1, unique: 1 }]); 
+  it('should return an empty array.', async () => {
+    await stats.getStats([]).then(result =>{
+      expect(result).toEqual([{Total:0,Unique:0}]); 
+    });
   })
 
-  it("should return an object with 3 properties when validate is true", () => {
-    const validateTrue = stats.getStats([data.validated]);
-    expect(validateTrue).not.toEqual([data.resultArrayValidated]);
+  it("should return an object with 3 properties when validate is true", async () => {
+    await stats.getStats(data.validated).then(result => {
+      expect(result).toEqual([data.resultsArray]);
+    })
 
 /*     return Promise.all(stats.getStats([data.validated])).then(res => {
       expect(res).not.toEqual([data.resultArrayValidated]);
     }); */
   });
+
+  it("should return an empty array", async () => {
+    await stats.stats([]).then(result => {
+      expect(result).toEqual([{Total:0,Unique:0,Broken:0}]);
+    });
+  })
+  
+  it("should give correct results", async ()=>{
+    await stats.stats(data.validated).then(result => {
+      expect(result).toEqual([data.resultArrayValidated]);
+    });
+  })
+  

@@ -6,7 +6,7 @@ const path = require('path');
 const directory = (dir) => {
     let fileSeeking = [];
     console.log(dir);
-    if(path.extname(dir) == ".md") {
+    if(path.extname(dir) == ".md" || path.extname(dir) == ".markdown") {
         return [dir];
     }
     const absolute = path.resolve(dir);

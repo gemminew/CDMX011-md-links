@@ -1,6 +1,5 @@
 const data = require('../tests/mocks/dataMocks')
 const validate = require('../mdlinks-modules/validate')
-const files = require('../mdlinks-modules/readFile');
 
 describe('Validate', () => {
     it('should be a function', () => {
@@ -20,3 +19,15 @@ test('should return an object with the status code 200', () => {
       expect(res).toEqual([data.validated[2]]);
     });
   });
+
+  test('validation formatter should return correct format', () => {
+    return validate.validationFormatter([data.validated[0]]).then(arr =>{
+      expect(arr[0]).toEqual("C:\\Projects\\CDMX011-md-links\\CDMX011-md-links\\README.md Markdown 200 OK");
+    }).catch(err => console.error(err));
+  })
+
+  test('bad URLs should be ignored and console log', () => {
+    return Promise.all(validate.getValidation([{url: 'fudgecakefact`ory'}])).then(result => {
+      expect(result).toEqual([{url: 'fudgecakefact`ory'}]);
+    })
+  })
