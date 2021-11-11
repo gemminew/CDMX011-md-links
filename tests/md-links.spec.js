@@ -2,9 +2,9 @@
 const mdLinks = require('../md-links');
 const data = require('../tests/mocks/dataMocks')
 const validate = require('../mdlinks-modules/validate')
-const files = require('./mdlinks-modules/readFile');
-const directories = require ('./mdlinks-modules/readDirectory');
-const stats = require('./mdlinks-modules/stats.js');
+const files = require('../mdlinks-modules/readFile');
+//const directories = require ('./mdlinks-modules/readDirectory');
+//const stats = require('./mdlinks-modules/stats.js');
 
 /* describe('mdlinks it is a function', () => {
   it('should be a function', () => {
@@ -12,9 +12,9 @@ const stats = require('./mdlinks-modules/stats.js');
   })
 });
  */
-it("should return a md file", () => {
-  const result = files.filterLinks(['../README.md']);
-  expect(result).toEqual(data.MDCheck[0]);
+it("should return a url", () => {
+  const result = files.filterLinks(['./tests/mocks/mockREADME.md']);
+  expect(result[0].url).toEqual('https://nodejs.org/es/about/');
 });
 
 describe('Validate', () => {

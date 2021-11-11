@@ -11,8 +11,8 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\md-links.js",
-            "args": ["README.md", "-v"]
+            "program": "${workspaceFolder}\\bin\\index.js",
+            "args": ["README.md", "-v", "-s"]
         }
     ]
 }

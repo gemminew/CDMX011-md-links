@@ -11,9 +11,6 @@ let re = new RegExp(text);
 
 function filterLinks (paths) {
   let linksMD = [];
-  //console.log('filterLinks...');
-  //const file = fs.readFileSync(fileMD, 'utf8')
- // console.log(JSON.stringify(paths));
     paths.forEach((filename) => {
       data = fs.readFileSync(path.resolve(filename), 'utf8') //, (err, data) => {
         let urls = [];
